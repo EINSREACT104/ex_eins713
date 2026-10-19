@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<link rel="stylesheet" href="styles.css">
+<title>Pulsa & Paket Data 8 Operator</title>
+</head>
+
+
+
+
+
+<body>
+
+                            <div class="container">
+                            <header>
+                                <div class="header-buttons">
+                                <button class="icon-btn" id="cartBtn" aria-label="Keranjang">🛒<span class="badge-count" id="cartBadge">0</span></button>
+                                <button class="icon-btn" id="themeToggle" aria-label="Tema">🌙</button>
+                                </div>
+                                <h1><a href="index.html">📱</a>Exeins-Cell  Pulsa & Paket Data</h1>
+                                <p> Harga Terbaru</p>
+                            </header>
+
+                            <div class="stats">
+                                <div class="stat-card"><div class="label">Total Produk</div><div class="value" id="totalProducts">0</div></div>
+                                <div class="stat-card"><div class="label">Operator</div><div class="value">8</div></div>
+                                <div class="stat-card"><div class="label">Termurah</div><div class="value" id="minPrice">-</div></div>
+                                <div class="stat-card"><div class="label">Tertinggi</div><div class="value" id="maxPrice">-</div></div>
+                            </div>
+
+                            <div class="controls">
+                                <div class="search-box"><input type="text" id="searchInput" placeholder="Cari operator / paket...didie nyah ketik we"></div>
+                                <div class="filter-buttons">
+                                <button class="filter-btn active" data-filter="all">Semua</button>
+                                <button class="filter-btn" data-filter="pulsa">Pulsa</button>
+                                <button class="filter-btn" data-filter="data">Data</button>
+                                </div>
+                                <div class="extra-controls">
+                                <select class="extra-select" id="sortSelect">
+                                    <option value="default">Default</option>
+                                    <option value="price-asc">Harga ↑</option>
+                                    <option value="price-desc">Harga ↓</option>
+                                    <option value="name-asc">Nama A-Z</option>
+                                </select>
+                                <select class="extra-select" id="operatorSelect">
+                                    <option value="all">Semua Op</option>
+                                    <option value="Telkomsel">Telkomsel</option>
+                                    <option value="Indosat Ooredoo">Indosat</option>
+                                    <option value="XL Axiata">XL</option>
+                                    <option value="Tri (3)">Tri</option>
+                                    <option value="Smartfren">Smartfren</option>
+                                    <option value="by.U">by.U</option>
+                                    <option value="Axis">Axis</option>
+                                    <option value="Ceria">Ceria</option>
+                                </select>
+                                </div>
+                            </div>
+
+                            <div class="table-wrapper">
+                                <table>
+                                <thead><tr><th>Operator</th><th>Tipe</th><th>Denom</th><th>Harga</th><th>Status</th><th>Aksi</th></tr></thead>
+                                <tbody id="tableBody"></tbody>
+                                </table>
+                                <div class="no-result" id="noResult" style="display:none;">😕 Produk tidak ditemukan.</div>
+                            </div>
+                            </div>
+
+                            <div class="toast-container" id="toastContainer"></div>
+
+                            <!-- Modal Beli -->
+                            <div class="modal-overlay" id="modalOverlay">
+                            <div class="modal">
+                                <h3>✅ Konfirmasi</h3>
+                                <p id="modalProduct"></p>
+                                <p>Harga: <span class="highlight" id="modalPrice"></span></p>
+                                <button id="addToCartBtn">🛒 Tambah ke Keranjang</button>
+                                <button class="secondary" onclick="closeModal()">Batal</button>
+                            </div>
+                            </div>
+
+                            <!-- Modal Keranjang -->
+                            <div class="modal-overlay" id="cartModalOverlay">
+                            <div class="modal">
+                                <h3>🛒 Keranjang</h3>
+                                <div id="cartItems"></div>
+                                <div id="cartFooter" style="display:none;">
+                                <div class="cart-total"><span>Total:</span><span class="highlight" id="cartTotal">Rp 0</span></div>
+                                <button id="checkoutBtn">💳 Checkout</button>
+                                </div>
+                                <button class="secondary" onclick="closeCart()">Tutup</button>
+                            </div>
+                            </div>
+
+                            <!-- ✅ Modal Sukses Checkout -->
+                            <div class="modal-overlay" id="successModalOverlay">
+                            <div class="modal">
+                                <div class="success-icon">🎉</div>
+                                <div class="success-text">Pesanan Berhasil Diproses!</div>
+                                <div class="success-sub">
+                                Pesanan Anda berhasil di proses.<br>
+                                Silakan hubungi admin <strong>Gilang Romadon</strong> untuk konfirmasi pembayaran.
+                                </div>
+                                <div class="order-summary" id="orderSummary"></div>
+                                <button class="wa-btn" id="waAdminBtn">📱 Hubungi Admin via WhatsApp</button>
+                                <button class="secondary" onclick="closeSuccess()">Tutup</button>
+                            </div>
+                            </div>
+
+            <script src="java.js"></script>
+
+</body>
+</html>
